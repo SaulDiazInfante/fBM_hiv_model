@@ -1,0 +1,116 @@
+
+%\documentclass[preprint,12pt]{elsarticle}
+%\documentclass[final,1p,times]{elsarticle}
+\documentclass[3p,sort&compress,times]{elsarticle}
+\usepackage[USenglish]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{ragged2e}
+\usepackage{bbm}
+\usepackage[titletoc,toc,title]{appendix}
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage[pagewise]{lineno}
+\usepackage{hyperref}
+\usepackage{proba}
+\usepackage{cleveref}
+\usepackage{booktabs}
+\usepackage{caption,subfig}
+\usepackage{txfonts}
+\usepackage[disable]{todonotes}
+%\usepackage{todonotes}
+\usepackage{multirow}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{remark}{Remark}
+\newtheorem{assumption}{Assumption}
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\norm}[1]{\lVert#1\rVert}
+\DeclareRobustCommand{\1}[1]{\ensuremath \mathbbm{1}_{\{#1\}}}
+\journal{Physica A: Statistical Mechanics and its Applications}
+\captionsetup[subfigure]{style=default, 
+  margin=10pt, parskip=0pt, hangindent=0pt, indention=5pt,
+  singlelinecheck=false}
+\begin{document}
+
+\begin{frontmatter}
+
+%% Title, authors and addresses
+
+%% use the tnoteref command within \title for footnotes;
+%% use the tnotetext command for theassociated footnote;
+%% use the fnref command within \author or \address for footnotes;
+%% use the fntext command for theassociated footnote;
+%% use the corref command within \author for corresponding author footnotes;
+%% use the cortext command for theassociated footnote;
+%% use the ead command for the email address,
+%% and the form \ead[url] for the home page:
+%% \title{Title\tnoteref{label1}}
+%% \tnotetext[label1]{}
+%% \author{Name\corref{cor1}\fnref{label2}}
+%% \ead{email address}
+%% \ead[url]{home page}
+%% \fntext[label2]{}
+%% \cortext[cor1]{}
+%% \address{Address\fnref{label3}}
+%% \fntext[label3]{}
+
+\title{An stochastic HIV Epidemic Model Driven with fBM death uncertinity}
+
+%% use optional labels to link authors explicitly to addresses:
+%% \author[label1,label2]{}
+%% \address[label1]{}
+%% \address[label2]{}
+
+\author{}
+
+\address{}
+
+\begin{abstract}
+%% Text of abstract
+
+\end{abstract}%%
+%% End of file `elsarticle-template-num-names.tex'.
+
+
+\begin{keyword}
+
+\end{keyword}
+
+\end{frontmatter}
+
+
+\section{Introduction} \label{sec:intro}
+\section{Model formulation} \label{sec:model_formulation}
+\section{Estimation of the Hurst parameter}\label{sec:hurst_parameter}
+\section{Existence of a unique positive invariant solution} 
+\label{sec:existence}
+\section{Numerical results} \label{sec:numerical_results}
+\section{Discussion}
+
+
+
+%% For citations use: 
+%%       \citet{<label>} ==> Jones et al. [21]
+%%       \citep{<label>} ==> [21]
+%%
+
+%% If you have bibdatabase file and want bibtex to generate the
+%% bibitems, please use
+%%
+%%  \bibliographystyle{elsarticle-num-names} 
+%%  \bibliography{<your bibdatabase>}
+
+%% else use the following coding to input the bibitems directly in the
+%% TeX file.
+  \nocite{*}
+  \bibliographystyle{elsarticle-num-names} 
+  \bibliography{Refereces.bib}
+\end{document}
+\endinput
