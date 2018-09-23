@@ -3,6 +3,7 @@
 # Source and supplement material for the article: 
 
 ## **An stochastic HIV Epidemic Model Driven with fBM Death Uncertainty**
+===In colaboration with Francico Delgado-Vences and Arelly Last NAME===
 
 
 
