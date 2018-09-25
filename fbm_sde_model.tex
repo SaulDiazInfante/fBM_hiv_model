@@ -1,4 +1,3 @@
-
 %\documentclass[preprint,12pt]{elsarticle}
 %\documentclass[final,1p,times]{elsarticle}
 \documentclass[3p,sort&compress,times]{elsarticle}
@@ -69,48 +68,29 @@
       Oaxaca, M\'exico.
     }
     \cortext[corresponding_author]{Corresponding author}
-  \title{An stochastic HIV Epidemic Model Driven with fBM Death Uncertinity}
-  %% use optional labels to link authors explicitly to addresses:
-  %% \author[label1,label2]{}
-  %% \address[label1]{}
-  %% \address[label2]{}
-  \author{}
-  \address{}
-\begin{abstract}
-%% Text of abstract
-\end{abstract}%%
-%% End of file `elsarticle-template-num-names.tex'.
+  \title{An stochastic HIV Epidemic Model Driven with fBM Death Uncertainty}
+  \begin{abstract}
+  %% Text of abstract
+  \end{abstract}%%
+  %% End of file `elsarticle-template-num-names.tex'.
 
-\begin{keyword}
-
-\end{keyword}
-
+  \begin{keyword}
+    fBM, stochastic differential equation.
+  \end{keyword}
 \end{frontmatter}
-
-
-\section{Introduction} \label{sec:intro}
-\section{Model formulation} \label{sec:model_formulation}
-\section{Estimation of the Hurst parameter}\label{sec:hurst_parameter}
-\section{Existence of a unique positive invariant solution} 
-\label{sec:existence}
-\section{Numerical results} \label{sec:numerical_results}
-\section{Discussion}
-
-
-
-%% For citations use: 
-%%       \citet{<label>} ==> Jones et al. [21]
-%%       \citep{<label>} ==> [21]
-%%
-
-%% If you have bibdatabase file and want bibtex to generate the
-%% bibitems, please use
-%%
-%%  \bibliographystyle{elsarticle-num-names} 
-%%  \bibliography{<your bibdatabase>}
-
-%% else use the following coding to input the bibitems directly in the
-%% TeX file.
+%-content
+  \section{Introduction} 
+    \label{sec:intro}
+  \section{Model formulation} 
+    \label{sec:model_formulation}
+    \input{Sections/ModelFormulation/model_formulation}
+  \section{Estimation of the Hurst parameter}
+    \label{sec:hurst_parameter}
+  \section{Existence of a unique positive invariant solution} 
+    \label{sec:existence}
+  \section{Numerical results} 
+    \label{sec:numerical_results}
+  \section{Discussion}
   \nocite{*}
   \bibliographystyle{elsarticle-num-names} 
   \bibliography{Refereces.bib}

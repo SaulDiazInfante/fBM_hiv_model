@@ -84,8 +84,9 @@ class DeterministicHIVAIDSMODEL(object):
         self.r_zero = r_zero
         return r_zero
 
+    #
     @staticmethod
-    def f_rhs(x, b, c, d, alpha, beta, mu, k_1, k_2, n_total):
+    def f_rhs(x, t, b, c, d, alpha, beta, mu, k_1, k_2, n_total):
         s = x[0]
         i = x[1]
         j = x[2]
@@ -100,14 +101,14 @@ class DeterministicHIVAIDSMODEL(object):
         return rhs
 
 
-class DeterministicHIVAIDSMODELNumercis(DeterministicHIVAIDSMODEL):
+class DeterministicHIVAIDSMODELNumerics(DeterministicHIVAIDSMODEL):
 
     def __init__(self, eps=0.0001, n_max=1000, dynamic_dim=4):
-        super(DeterministicHIVAIDSMODELNumercis, self).__init__()
+        super(DeterministicHIVAIDSMODELNumerics, self).__init__()
         self.n_max = n_max
         self.eps = eps
         self.dynamic_dim = dynamic_dim
-        self.t = np.linspace(self.t_0, self.t, n_max)
+        self.t = np.linspace(self.t_0, self.t_f, n_max)
         self.x = np.zeros([n_max, dynamic_dim])
 
     def lsoda_solution(self):
@@ -125,7 +126,7 @@ class DeterministicHIVAIDSMODELNumercis(DeterministicHIVAIDSMODEL):
         n_total = self.n_total
         #
         y = integrate.odeint(self.f_rhs, y_0, t,
-                             args=[b, c, d, alpha, beta,
-                                   mu, k_1, k_2, n_total])
+                             args=(b, c, d, alpha, beta,
+                                   mu, k_1, k_2, n_total))
         self.x = y
         return y
