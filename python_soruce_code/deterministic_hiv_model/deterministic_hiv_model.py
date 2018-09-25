@@ -91,12 +91,11 @@ class DeterministicHIVAIDSMODEL(object):
         i = x[1]
         j = x[2]
         a = x[3]
-
         f_s = mu * n_total - c * beta * (i + b * j) * s - mu * s
         f_i = c * beta * (i + b * j) * s - (mu + k_1) * i + alpha * j
         f_j = k_1 * i - (mu + k_2 + alpha) * j
         f_a = k_2 * j - (mu + d) * a
-
+        del t
         rhs = np.array([f_s, f_i, f_j, f_a])
         return rhs
 
