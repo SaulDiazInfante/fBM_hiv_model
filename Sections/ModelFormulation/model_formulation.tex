@@ -1,0 +1,19 @@
+Here we consider the model reported in \cite{Cai2009} as block base to
+design our stochastic model. The deterministic dynamics obeys the following 
+equation:
+%
+\begin{equation}
+    \begin{aligned}
+        \frac{dS}{dt} &=
+            \mu K - c \beta (I + b J) S - \mu S,
+            \\
+        \frac{dI}{dt} &=
+            c \beta (I + b J) S - (\mu + k_1)  I + \alpha J,
+            \\
+        \frac{dJ}{dt} &=
+            k_1 I - (\mu + k_2 + \alpha) J,
+            \\
+        \frac{dA}{dt} &=
+            k_2 J - (\mu + d) A.
+    \end{aligned}
+\end{equation}
