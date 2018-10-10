@@ -1,0 +1,49 @@
+This is BibTeX, Version 0.99d (TeX Live 2018)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: fbm_sde_model.aux
+The style file: elsarticle-num-names.bst
+Database file #1: Refereces.bib
+Warning--I didn't find a database entry for ""
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+You've used 7 entries,
+            2918 wiz_defined-function locations,
+            695 strings with 7506 characters,
+and the built_in function-call counts, 4938 in all, are:
+= -- 418
+> -- 180
+< -- 3
++ -- 67
+- -- 60
+* -- 611
+:= -- 707
+add.period$ -- 20
+call.type$ -- 7
+change.case$ -- 55
+chr.to.int$ -- 7
+cite$ -- 7
+duplicate$ -- 339
+empty$ -- 343
+format.name$ -- 83
+if$ -- 918
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 69
+newline$ -- 50
+num.names$ -- 28
+pop$ -- 90
+preamble$ -- 1
+purify$ -- 55
+quote$ -- 0
+skip$ -- 74
+stack$ -- 0
+substring$ -- 259
+swap$ -- 269
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 63
+warning$ -- 0
+while$ -- 35
+width$ -- 0
+write$ -- 118
+(There was 1 warning)

@@ -1,0 +1,91 @@
+\begin{thebibliography}{7}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\href}[2]{#2}
+\providecommand{\path}[1]{#1}
+\providecommand{\DOIprefix}{doi:}
+\providecommand{\ArXivprefix}{arXiv:}
+\providecommand{\URLprefix}{URL: }
+\providecommand{\Pubmedprefix}{pmid:}
+\providecommand{\doi}[1]{\href{http://dx.doi.org/#1}{\path{#1}}}
+\providecommand{\Pubmed}[1]{\href{pmid:#1}{\path{#1}}}
+\providecommand{\bibinfo}[2]{#2}
+\ifx\xfnm\relax \def\xfnm[#1]{\unskip,\space#1}\fi
+%Type = Article
+\bibitem[{Boufoussi and Hajji(2012)}]{Boufoussi2012}
+\bibinfo{author}{B.~Boufoussi}, \bibinfo{author}{S.~Hajji},
+\newblock \bibinfo{title}{{Neutral stochastic functional differential equations
+  driven by a fractional Brownian motion in a Hilbert space}},
+\newblock \bibinfo{journal}{Statistics {\&} Probability Letters}
+  \bibinfo{volume}{82} (\bibinfo{year}{2012}) \bibinfo{pages}{1549--1558}.
+  \URLprefix \url{http://dx.doi.org/10.1016/j.spl.2012.04.013
+  http://linkinghub.elsevier.com/retrieve/pii/S0167715212001563}.
+  \DOIprefix\doi{10.1016/j.spl.2012.04.013}.
+%Type = Article
+\bibitem[{Nguyen(2012)}]{Nguyen2012}
+\bibinfo{author}{D.~T. Nguyen},
+\newblock \bibinfo{title}{{Mackey–Glass equation driven by fractional
+  Brownian motion}},
+\newblock \bibinfo{journal}{Physica A: Statistical Mechanics and its
+  Applications} \bibinfo{volume}{391} (\bibinfo{year}{2012})
+  \bibinfo{pages}{5465--5472}. \URLprefix
+  \url{http://dx.doi.org/10.1016/j.physa.2012.06.013
+  http://linkinghub.elsevier.com/retrieve/pii/S0378437112005109}.
+  \DOIprefix\doi{10.1016/j.physa.2012.06.013}.
+%Type = Article
+\bibitem[{Ma et~al.(2017)Ma, Zhang, and Ye}]{Ma2017}
+\bibinfo{author}{Y.~Ma}, \bibinfo{author}{Q.~Zhang}, \bibinfo{author}{M.~Ye},
+\newblock \bibinfo{title}{{Mean-square dissipativity of numerical methods for a
+  class of resource-competition models with fractional Brownian motion}},
+\newblock \bibinfo{journal}{Systems Science {\&} Control Engineering}
+  \bibinfo{volume}{5} (\bibinfo{year}{2017}) \bibinfo{pages}{268--277}.
+  \URLprefix \url{https://doi.org/10.1080/21642583.2017.1333469
+  https://www.tandfonline.com/doi/full/10.1080/21642583.2017.1333469}.
+  \DOIprefix\doi{10.1080/21642583.2017.1333469}.
+%Type = Article
+\bibitem[{Mishura and Shevchenko(2008)}]{Mishura2008}
+\bibinfo{author}{Y.~Mishura}, \bibinfo{author}{G.~Shevchenko},
+\newblock \bibinfo{title}{{The rate of convergence for Euler approximations of
+  solutions of stochastic differential equations driven by fractional Brownian
+  motion}},
+\newblock \bibinfo{journal}{Stochastics} \bibinfo{volume}{80}
+  (\bibinfo{year}{2008}) \bibinfo{pages}{489--511}.
+  \DOIprefix\doi{10.1080/17442500802024892}.
+%Type = Article
+\bibitem[{Cai et~al.(2009)Cai, Li, Ghosh, and Guo}]{Cai2009}
+\bibinfo{author}{L.~Cai}, \bibinfo{author}{X.~Li}, \bibinfo{author}{M.~Ghosh},
+  \bibinfo{author}{B.~Guo},
+\newblock \bibinfo{title}{{Stability analysis of an HIV/AIDS epidemic model
+  with treatment}},
+\newblock \bibinfo{journal}{Journal of Computational and Applied Mathematics}
+  \bibinfo{volume}{229} (\bibinfo{year}{2009}) \bibinfo{pages}{313--323}.
+  \URLprefix
+  \url{https://www.sciencedirect.com/science/article/pii/S0377042708005815
+  http://linkinghub.elsevier.com/retrieve/pii/S0377042708005815}.
+  \DOIprefix\doi{10.1016/j.cam.2008.10.067}.
+%Type = Article
+\bibitem[{Garrido-Atienza et~al.(2009)Garrido-Atienza, Kloeden, and
+  Neuenkirch}]{Garrido-Atienza2009}
+\bibinfo{author}{M.~J. Garrido-Atienza}, \bibinfo{author}{P.~E. Kloeden},
+  \bibinfo{author}{A.~Neuenkirch},
+\newblock \bibinfo{title}{{Discretization of Stationary Solutions of Stochastic
+  Systems Driven by Fractional Brownian Motion}},
+\newblock \bibinfo{journal}{Applied Mathematics and Optimization}
+  \bibinfo{volume}{60} (\bibinfo{year}{2009}) \bibinfo{pages}{151--172}.
+  \URLprefix \url{http://link.springer.com/10.1007/s00245-008-9062-9}.
+  \DOIprefix\doi{10.1007/s00245-008-9062-9}.
+%Type = Article
+\bibitem[{Traebert et~al.(2018)Traebert, Traebert, Schuelter-Trevisol, {Cortez
+  Escalante}, and Schneider}]{Traebert2018}
+\bibinfo{author}{J.~Traebert}, \bibinfo{author}{E.~Traebert},
+  \bibinfo{author}{F.~Schuelter-Trevisol}, \bibinfo{author}{J.~J. {Cortez
+  Escalante}}, \bibinfo{author}{I.~J.~C. Schneider},
+\newblock \bibinfo{title}{{The burden of AIDS: a time series analysis of
+  thirty-five years of the epidemic in Brazil}},
+\newblock \bibinfo{journal}{AIDS Care} \bibinfo{volume}{0}
+  (\bibinfo{year}{2018}) \bibinfo{pages}{1--8}. \URLprefix
+  \url{https://doi.org/10.1080/09540121.2018.1456642
+  https://www.tandfonline.com/doi/full/10.1080/09540121.2018.1456642}.
+  \DOIprefix\doi{10.1080/09540121.2018.1456642}.
+
+\end{thebibliography}
