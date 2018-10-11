@@ -15,7 +15,7 @@
                 k_1 I - (\mu + k_2 + \alpha) J,
                 \\
             \frac{dA}{dt} &=
-                k_2 J - (\mu + d) A.
+                k_2 J - (\mu + \mu_d) A.
         \end{aligned}
     \end{equation}
     [1]

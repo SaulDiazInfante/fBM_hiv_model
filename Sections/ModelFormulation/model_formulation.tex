@@ -17,3 +17,16 @@ equation:
             k_2 J - (\mu + \mu_d) A.
     \end{aligned}
 \end{equation}
+
+Our aim is to quantify uncertainty by a fractional Ornstein–Uhlenbeck 
+process. To this end, we fit a mean reverting fractional process to the 
+disease-related AIDS rate $\mu_d$. That is, we estimate the reverting 
+parameters $\gamma_d, \bar{\mu}_d 
+\sigma_d$ and the Hurst parameter $H$ of the fractional stochastic process
+\begin{equation}\label{eqn:fOU}
+    \frac{d \mu_d(t)}{dt} = 
+        \gamma_d \left( \bar{\mu}_d - \mu_d(t) \right) dt
+        + \sigma_d dB_t^H.
+\end{equation}
+Here $B_t^H$ denotes a fractional Brownian motion with Hurst parameter
+$H\in[\frac{1}{2}, 1)$.
