@@ -26,18 +26,15 @@
         Journal of Computational and Applied Mathematics.
 """
 import numpy as np
-from deterministic_hiv_model import DeterministicHIVAIDSMODEL
 
 
-class StochasticHIVAIDSMODEL(DeterministicHIVAIDSMODEL):
+class StochasticHIVAIDSMODEL():
 
-    def __init__(self, eps=0.0001, n_max=1000, dynamic_dim=5):
-        super(DeterministicHIVAIDSMODEL, self).__init__()
-        self.n_max = n_max
-        self.eps = eps
-        self.dynamic_dim = dynamic_dim
-        self.t = np.linspace(self.t_0, self.t_f, n_max)
-        self.x = np.zeros([n_max, dynamic_dim])
+    def __init__(self, t_0=0.0, t_f=300.0,
+                 b=0.3, c=3.0, d=0.0,
+                 alpha=0.01, beta=0.0005,
+                 mu=0.02, k_1=0.01, k_2=0.02
+                 ):
         # Parameters for the test example
         self.t_0 = t_0
         self.t_f = t_f
