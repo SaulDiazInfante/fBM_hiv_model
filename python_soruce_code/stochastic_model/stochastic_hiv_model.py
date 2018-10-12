@@ -32,10 +32,11 @@ from fbm import FBM
 class StochasticHIVAIDSMODEL(object):
 
     def __init__(self, t_0=0.0, t_f=300.0,
-                 b=0.3, c=3.0, mean_mu_d=0.0,
+                 b=0.3, c=3.0, mean_mu_d=1.5,
                  alpha=0.01, beta=0.0005,
                  mu=0.02, k_1=0.01, k_2=0.02,
-                 gamma_d=1.0, sigma_d=1.0
+                 gamma_d=1.0, sigma_d=1.0, hurst=0.5,
+                 mu_d_zero=3.0
                  ):
         # Parameters for the test example
         self.t_0 = t_0
@@ -61,8 +62,9 @@ class StochasticHIVAIDSMODEL(object):
         self.r_zero_d = num / den
         #
         self.gamma_d = gamma_d
-        self.mu_d_zero = 2 * mean_mu_d
+        self.mu_d_zero = mu_d_zero
         self.sigma_d = sigma_d
+        self.hurst = hurst
 
     def set_parameters(self, b, c, mean_mu_d, alpha, beta, mu, k_1, k_2):
         self.b = b
@@ -115,7 +117,7 @@ class StochasticHIVAIDSMODEL(object):
 
 class StochasticHIVAIDSMODELNumerics(StochasticHIVAIDSMODEL):
 
-    def __init__(self, eps=0.0001, n_max=1000, dynamic_dim=4):
+    def __init__(self, eps=0.0001, n_max=2 ** 12, dynamic_dim=4):
         super(StochasticHIVAIDSMODELNumerics, self).__init__()
         self.n_max = n_max
         self.eps = eps
@@ -123,21 +125,30 @@ class StochasticHIVAIDSMODELNumerics(StochasticHIVAIDSMODEL):
         self.t = np.linspace(self.t_0, self.t_f, n_max)
         self.x = np.zeros([n_max, dynamic_dim])
         self.mu_d = np.zeros([n_max, 1])
-        self.fmb_generator = FMB(n_max, 0.5)
+
+    def fbm(self, n, hurst, length=1, method="daviesharte"):
+        """One off sample of fBm."""
+        f = FBM(n, hurst, length, method)
+        return f.fbm()
 
     def mean_ou_solution(self):
         n_max = self.n_max
-        x_zero = self.mu_d_zero
-        self.mu_d[0] = x_zero
+        x_j = self.mu_d_zero
+        self.mu_d[0] = x_j
         mu_d = self.mu_d
         gamma_d = self.gamma_d
         mean_mu_d = self.mean_mu_d
         h = self.t[1] - self.t[0]
-        x_jp1 = 0.0
-        x_j = x_zero
+        sigma_d = self.sigma_d
         gamma_d_mean_mu_d = gamma_d * mean_mu_d
+        hurst = self.hurst
+        fbm_generator = self.fbm(n=n_max, hurst=0.5, length=1,
+                                 method="daviesharte")
         for j in np.arange(n_max - 1):
             x_j = mu_d[j]
-            x_jp1 = gamma_d * mean_mu_d \
-                    + np.exp(-gamma_d * h) * (x_j - gamma_d_mean_mu_d)
-            mu_d[j + 1] = x_jp1
+            x_jp1 = gamma_d * mean_mu_d + np.exp(-gamma_d * h) \
+                    * (x_j - gamma_d_mean_mu_d)
+            mu_d[j + 1] = x_jp1 + \
+                          sigma_d * (fbm_generator[j + 1] - fbm_generator[j])
+        self.mu_d = mu_d
+        return mu_d
