@@ -16,7 +16,7 @@
                 k_1 I - (\mu + k_2 + \alpha) J,
                 \\
             \frac{dA}{dt} &=
-                k_2 J - (\mu + mu_d) A.
+                k_2 J - (\mu + mean_mu_d) A.
 
         \end{aligned}
     \end{equation}
@@ -26,14 +26,16 @@
         Journal of Computational and Applied Mathematics.
 """
 import numpy as np
+from fbm import FBM
 
 
-class StochasticHIVAIDSMODEL():
+class StochasticHIVAIDSMODEL(object):
 
     def __init__(self, t_0=0.0, t_f=300.0,
-                 b=0.3, c=3.0, d=0.0,
+                 b=0.3, c=3.0, mean_mu_d=0.0,
                  alpha=0.01, beta=0.0005,
-                 mu=0.02, k_1=0.01, k_2=0.02
+                 mu=0.02, k_1=0.01, k_2=0.02,
+                 gamma_d=1.0, sigma_d=1.0
                  ):
         # Parameters for the test example
         self.t_0 = t_0
@@ -41,7 +43,7 @@ class StochasticHIVAIDSMODEL():
         #
         self.b = b
         self.c = c
-        self.d = d
+        self.mean_mu_d = mean_mu_d
         self.alpha = alpha
         self.beta = beta
         self.mu = mu
@@ -56,20 +58,24 @@ class StochasticHIVAIDSMODEL():
         self.n_total = self.s_zero + self.i_zero + self.j_zero + self.a_zero
         num = c * beta * self.n_total * (mu + k_2 + alpha + b * k_1)
         den = (mu + k_1) * (mu + k_2) * (mu * alpha)
-        self.r_zero = num / den
+        self.r_zero_d = num / den
+        #
+        self.gamma_d = gamma_d
+        self.mu_d_zero = 2 * mean_mu_d
+        self.sigma_d = sigma_d
 
-    def set_parameters(self, b, c, d, alpha, beta, mu, k_1, k_2):
+    def set_parameters(self, b, c, mean_mu_d, alpha, beta, mu, k_1, k_2):
         self.b = b
         self.c = c
-        self.d = d
+        self.mean_mu_d = mean_mu_d
         self.alpha = alpha
         self.beta = beta
         self.mu = mu
         self.k_1 = k_1
         self.k_2 = k_2
-        self.r_zero = 0.0
+        self.r_zero_d = 0.0
 
-    def compute_r_zero(self):
+    def compute_det_r_zero(self):
         b = self.b
         c = self.c
         alpha = self.alpha
@@ -82,12 +88,12 @@ class StochasticHIVAIDSMODEL():
         num = c * beta * n_total * (mu + k_2 + alpha + b * k_1)
         den = (mu + k_1) * (mu + k_2) * (mu * alpha)
         r_zero = num / den
-        self.r_zero = r_zero
+        self.r_zero_d = r_zero
         return r_zero
 
     #
     @staticmethod
-    def f_rhs(x, t, b, c, d, alpha, beta, mu, k_1, k_2, n_total):
+    def f_rhs(x, t, b, c, mu_d, alpha, beta, mu, k_1, k_2, n_total):
         s = x[0]
         i = x[1]
         j = x[2]
@@ -95,7 +101,43 @@ class StochasticHIVAIDSMODEL():
         f_s = mu * n_total - c * beta * (i + b * j) * s - mu * s
         f_i = c * beta * (i + b * j) * s - (mu + k_1) * i + alpha * j
         f_j = k_1 * i - (mu + k_2 + alpha) * j
-        f_a = k_2 * j - (mu + d) * a
+        f_a = k_2 * j - (mu + mu_d) * a
         del t
         rhs = np.array([f_s, f_i, f_j, f_a])
         return rhs
+
+    def ou_drift(self, x):
+        gamma_d = self.gamma_d
+        mean_mu_d = self.mean_mu_d
+        f_ou = gamma_d * (mean_mu_d - x)
+        return f_ou
+
+
+class StochasticHIVAIDSMODELNumerics(StochasticHIVAIDSMODEL):
+
+    def __init__(self, eps=0.0001, n_max=1000, dynamic_dim=4):
+        super(StochasticHIVAIDSMODELNumerics, self).__init__()
+        self.n_max = n_max
+        self.eps = eps
+        self.dynamic_dim = dynamic_dim
+        self.t = np.linspace(self.t_0, self.t_f, n_max)
+        self.x = np.zeros([n_max, dynamic_dim])
+        self.mu_d = np.zeros([n_max, 1])
+        self.fmb_generator = FMB(n_max, 0.5)
+
+    def mean_ou_solution(self):
+        n_max = self.n_max
+        x_zero = self.mu_d_zero
+        self.mu_d[0] = x_zero
+        mu_d = self.mu_d
+        gamma_d = self.gamma_d
+        mean_mu_d = self.mean_mu_d
+        h = self.t[1] - self.t[0]
+        x_jp1 = 0.0
+        x_j = x_zero
+        gamma_d_mean_mu_d = gamma_d * mean_mu_d
+        for j in np.arange(n_max - 1):
+            x_j = mu_d[j]
+            x_jp1 = gamma_d * mean_mu_d \
+                    + np.exp(-gamma_d * h) * (x_j - gamma_d_mean_mu_d)
+            mu_d[j + 1] = x_jp1
